@@ -71,11 +71,33 @@
             <td></td>
             <td></td>
         </tr>
+        <tr>
+            <td>
+                <button onclick="sortFun(this,radixSort)">基数排序（Radix Sort）</button>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="sortFun(this,bucketSort)">桶排序（Bucket Sort）</button>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="sortFun(this,heapSort)">堆排序（Heap Sort）</button>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
     </table>
     <script src="index.js"></script>
     <script>
         function sortFun(btn, fun) {
-            var arr = getArr(4);
+            var arr = getArr(20);
+            //arr=[0,27,11,37,95,41,40,85,87,16,64,36,24,98,96,97,3,26,38,40];
             btn.parentNode.nextElementSibling.innerHTML = JSON.stringify(arr);
             btn.parentNode.nextElementSibling.nextElementSibling.innerHTML = JSON.stringify(fun(arr));
         }
