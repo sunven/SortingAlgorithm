@@ -230,20 +230,25 @@ function radixSort(array) {
  * 桶排序（Bucket Sort）
  * @param {*} array 
  */
-function bucketSort(array) {
+function bucketSort(array, bucketSize) {
     if (array == null || array.length < 2) {
         return array;
     }
     //每个桶可以放入非重复值的数量
-    var bucketSize = 5;
+    var bucketSize = bucketSize || 5;
     var max = array[0],
         min = array[0];
     // 找到最大值最小值
     for (var i = 0; i < array.length; i++) {
-        if (array[i] > max)
+        if (array[i] > max) {
             max = array[i];
-        if (array[i] < min)
+        }
+        if (array[i] < min) {
             min = array[i];
+        }
+    }
+    if(max==min){
+        return array;
     }
     //桶的个数
     var bucketCount = Math.floor((max - min) / bucketSize) + 1;
@@ -256,7 +261,7 @@ function bucketSort(array) {
         if (bucketCount == 1) {
             bucketSize--;
         }
-        var temp = bucketSort(bucketArr[i]);
+        var temp = bucketSort(bucketArr[i], bucketSize);
         for (var j = 0; j < temp.length; j++) {
             resultArr.push(temp[j])
         };

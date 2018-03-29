@@ -16,6 +16,7 @@
 
 <body>
     <h4>http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html</h4>
+    <h4>https://blog.csdn.net/lg1259156776/article/details/48803043</h4>
     <table width="100%">
         <tr>
             <th width="20%">操作</th>
@@ -97,9 +98,22 @@
     <script>
         function sortFun(btn, fun) {
             var arr = getArr(20);
-            //arr=[0,27,11,37,95,41,40,85,87,16,64,36,24,98,96,97,3,26,38,40];
+            //arr=[19,27,11,37,14,27];
             btn.parentNode.nextElementSibling.innerHTML = JSON.stringify(arr);
             btn.parentNode.nextElementSibling.nextElementSibling.innerHTML = JSON.stringify(fun(arr));
+        }
+
+        function test() {
+            var success = 0;
+            for (let i = 0; i < 1000; i++) {
+                var arr = getArr(20);
+                if (JSON.stringify(arr.sort(function (a, b) {
+                        return a - b;
+                    })) == JSON.stringify(bucketSort(arr))) {
+                    success++;
+                }
+            }
+            return success;
         }
     </script>
 </body>
